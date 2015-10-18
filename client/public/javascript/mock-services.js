@@ -1,10 +1,9 @@
+'use strict';
+
 function reloadPage(data) {
   console.info('system reload');
   console.info(data);
   document.location.reload(true);
-};
-
-function onLoad(data) {
 };
 
 $(function() {
@@ -23,12 +22,20 @@ $(function() {
 
   $('button').click(function(e) {
     e.preventDefault();
+
+    var issueName = $('#issueName').val();
+    var timeSpan = $('#timeSpan').val();
+
+    if (!issueName || !timeSpan) {
+      return;
+    }
+
     $.ajax({
       type: 'POST',
       url: 'http://localhost:8888/issue/',
       data: {
-        issue: $('#issueName').val(),
-        timeSpan: $('#timeSpan').val(),
+        issue: issueName,
+        timeSpan: timeSpan,
       },
       success: reloadPage(),
       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',

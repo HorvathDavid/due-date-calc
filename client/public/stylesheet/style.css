@@ -5,3 +5,7 @@ table, th, td {
 td {
   padding: 10px;
 }
+
+button {
+  margin: 10px;
+}
