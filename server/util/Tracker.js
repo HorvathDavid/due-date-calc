@@ -1,9 +1,10 @@
 'use strict';
 
-// load issues into memory -> temporary solution, just for the presentation
-var _TRACKED_ISSUES = [];
 
-function Tracker() {};
+function Tracker() {
+  // load issues into memory -> temporary solution, just for the presentation
+  this._TRACKED_ISSUES = [];
+};
 
 /**
 * @method loadIssues
@@ -11,8 +12,8 @@ function Tracker() {};
 */
 Tracker.prototype.loadIssues = function() {
   return new Promise(function(resolve, reject) {
-    if (_TRACKED_ISSUES.length) {
-      resolve(_TRACKED_ISSUES);
+    if (this._TRACKED_ISSUES.length) {
+      resolve(this._TRACKED_ISSUES);
     } else {
       resolve(['No entry']);
     }
@@ -35,7 +36,7 @@ Tracker.prototype.updateIssues = function(data) {
         timeSpan: data.timeSpan,
         dueDate: dueDate,
       };
-      _TRACKED_ISSUES.unshift(issue);
+      this._TRACKED_ISSUES.unshift(issue);
       resolve();
     } else {
       reject();
@@ -58,11 +59,10 @@ Tracker.prototype.calculateDueDate = function(date, timeSpan) {
   var hours = date.getHours();
   var minutes = date.getMinutes();
   var spanDays = Math.floor(timeSpan / 8);
-  console.log(spanDays);
   var remainigHours = timeSpan % 8;
 
   // SET HOURS
-  if ((hours + remainigHours) > 17) {
+  if ((hours + remainigHours) > 17 || ((hours + remainigHours) === 17 && minutes > 0)) {
     spanDays += 1;
     remainigHours = remainigHours - (17 - hours);
     dueDate.setHours(8 + remainigHours);

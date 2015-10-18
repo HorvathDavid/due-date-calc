@@ -26,7 +26,7 @@ $(function() {
     var issueName = $('#issueName').val();
     var timeSpan = $('#timeSpan').val();
 
-    if (!issueName || !timeSpan) {
+    if (!issueName || !timeSpan || isNaN(timeSpan)) {
       return;
     }
 
