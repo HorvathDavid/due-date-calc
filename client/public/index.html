@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>BUG TRACKER</title>
 
-    <!-- Bootstrap -->
+    <link href="stylesheet/style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,11 +20,23 @@
     <h1>BUG TRACKER</h1>
 
     <div>
-      <form action="http://localhost:8888/issue/" method="post">
-        Your name: <input id="name" type="text" name="name"><br>
-        Details: <input id="details" type="text" name="details"><br>
-        <button class="submit">Send issue!</button>
+      <form>
+        Issue: <input id="issueName" type="text" name="issueName"><br>
+        TimeSpan: <input id="timeSpan" type="text" name="timeSpan"><br>
+        <button>Send issue!</button>
       </form>
+    </div>
+
+    <div>
+      <h2>Issues</h2>
+      <table class="issueTable">
+        <tr>
+          <th>Issue</th>
+          <th>Issue date</th>
+          <th>Time Span</th>
+          <th>Due Date</th>
+        </tr>
+      </table>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
